@@ -13,7 +13,7 @@ const Footer = () => {
           display: "inline-flex",
           alignItems: "center",
           textDecoration: "none",
-          color: "inherit",
+          color: "#81667A",
         }}
       >
         <GitHubIcon fontSize="small" style={{ marginRight: "0.5rem" }} />
