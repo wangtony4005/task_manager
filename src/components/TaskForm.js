@@ -26,8 +26,8 @@ const TaskForm = ({ addTask }) => {
         onChange={(e) => setTaskName(e.target.value)}
         InputProps={{
           style: {
-            color: '#989FCE',
-            backgroundColor: '#272838',
+            color: '#81667A',
+            backgroundColor: '  #FFFFFF',  
           },
         }}
         InputLabelProps={{
@@ -42,4 +42,3 @@ const TaskForm = ({ addTask }) => {
 };
 
 export default TaskForm;
-

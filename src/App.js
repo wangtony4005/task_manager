@@ -7,18 +7,18 @@ import './App.css';
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#347FC4',
+      main: '#92B4A7', // Adjusted color
     },
     secondary: {
-      main: '#7D6B91',
+      main: '#81667A', // Adjusted color
     },
     background: {
-      default: '#272838',
-      paper: '#272838',
+      default: '#D1F0B1', // Adjusted color
+      paper: '#D1F0B1',   // Adjusted color
     },
     text: {
-      primary: '#989FCE',
-      secondary: '#5D536B',
+      primary: '#8C8A93', // Adjusted color
+      secondary: '#B6CB9E', // Adjusted color
     },
   },
 });

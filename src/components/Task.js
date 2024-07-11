@@ -7,15 +7,15 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#989FCE' }}>
+        <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#8C8A93' }}>
           <Delete />
         </IconButton>
       }
-      style={{ borderBottom: '1px solid #5D536B' }}
+      style={{ borderBottom: '1px solid #81667A' }}
     >
       <Checkbox
-        icon={<CheckBoxOutlineBlank style={{ color: '#989FCE' }} />}
-        checkedIcon={<CheckBox style={{ color: '#347FC4' }} />}
+        icon={<CheckBoxOutlineBlank style={{ color: '#8C8A93' }} />}
+        checkedIcon={<CheckBox style={{ color: '#92B4A7' }} />}
         checked={task.completed}
         onClick={() => toggleTaskCompletion(task.id)}
       />
