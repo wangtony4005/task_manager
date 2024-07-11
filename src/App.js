@@ -39,7 +39,7 @@ const theme = createTheme({
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
-  const [sortCriteria, setSortCriteria] = useState('');
+  const [sortCriteria, setSortCriteria] = useState("");
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -81,12 +81,14 @@ const App = () => {
 
   const sortTasks = (tasks, criteria) => {
     switch (criteria) {
-      case 'date':
+      case "date":
         return tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
-      case 'priority':
-        const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
-        return tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
-      case 'name':
+      case "priority":
+        const priorityOrder = { High: 1, Medium: 2, Low: 3 };
+        return tasks.sort(
+          (a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]
+        );
+      case "name":
         return tasks.sort((a, b) => a.name.localeCompare(b.name));
       default:
         return tasks;
@@ -109,7 +111,16 @@ const App = () => {
           {dayTasks.map((task) => (
             <li
               key={task.id}
-              style={{ color: task.completed ? "#5D536B" : "#000" }}
+              style={{
+                color:
+                  task.priority === "High"
+                    ? "#FF0000" // red for high priority
+                    : task.priority === "Medium"
+                    ? "#FFA500" // orange for medium priority
+                    : task.priority === "Low"
+                    ? "#008000" // green for low priority
+                    : "#000000", // default color
+              }}
             >
               {task.name}
             </li>
