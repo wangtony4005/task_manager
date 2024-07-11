@@ -1,24 +1,36 @@
 .completed {
     text-decoration: line-through;
     color: #5D536B;
-  }
-  
-  .task-details {
+}
+
+.task-details {
     display: flex;
     flex-direction: column;
     margin-top: 4px;
-  }
-  
-  .task-details span {
+}
+
+.task-details span {
     display: block;
-  }
-  
-  .task-secondary {
+}
+
+.task-secondary {
     display: flex;
     margin-top: 4px;
-  }
-  
-  .task-secondary .priority {
+}
+
+.task-secondary .priority {
     margin-left: 15px;
-  }
-  
+}
+
+.task-secondary.priority-low .priority {
+    color: green !important;
+}
+
+.task-secondary.priority-medium .priority {
+    color: orange !important;
+}
+
+.task-secondary.priority-high .priority {
+    color: red !important;
+}
+
