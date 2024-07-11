@@ -1,5 +1,5 @@
 import React from 'react';
-import { ListItem, ListItemText, IconButton, Checkbox, Typography } from '@mui/material';
+import { ListItem, ListItemText, IconButton, Checkbox, Typography, Box } from '@mui/material';
 import { Delete, CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
 import './Task.css';
 
@@ -7,7 +7,7 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#8C8A93' }}>
+        <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#81667A' }}>
           <Delete />
         </IconButton>
       }
@@ -22,14 +22,14 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
       <ListItemText
         primary={task.name}
         secondary={
-          <>
+          <Box className="task-secondary">
             <Typography component="span" variant="body2" color="textPrimary">
               Due: {task.dueDate}
             </Typography>
-            <Typography component="span" variant="body2" color="textSecondary">
+            <Typography component="span" variant="body2" color="textSecondary" className="priority">
               Priority: {task.priority}
             </Typography>
-          </>
+          </Box>
         }
         className={task.completed ? 'completed' : ''}
       />
