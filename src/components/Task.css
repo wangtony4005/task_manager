@@ -1,4 +1,3 @@
-/* Task.css */
 .completed {
     text-decoration: line-through;
     color: #5D536B;
@@ -12,5 +11,14 @@
   
   .task-details span {
     display: block;
+  }
+  
+  .task-secondary {
+    display: flex;
+    margin-top: 4px;
+  }
+  
+  .task-secondary .priority {
+    margin-left: 15px;
   }
   
