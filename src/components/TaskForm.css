@@ -1,31 +1,30 @@
 /* src/components/TaskForm.css */
 .task-form {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .task-form input {
-    padding: 10px;
-    font-size: 1rem;
-    margin-right: 10px;
-    border: 1px solid #92B4A7;
-    border-radius: 4px;
-    background-color: #D1F0B1; 
-    color: #8C8A93; 
-  }
-  
-  .task-form button {
-    padding: 10px 20px;
-    font-size: 1rem;
-    border: none;
-    background-color: #92B4A7; 
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .task-form button:hover {
-    background-color: #81667A; 
-  }
-  
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.task-form input {
+  padding: 10px;
+  font-size: 1rem;
+  margin-right: 10px;
+  border: 1px solid #347FC4;
+  border-radius: 4px;
+  background-color: #FFFFFF; /* Changed to lighter color */
+  color: #272838; /* Adjust text color if needed */
+}
+
+.task-form button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #347FC4;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.task-form button:hover {
+  background-color: #7D6B91;
+}
