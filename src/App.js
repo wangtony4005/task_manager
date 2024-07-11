@@ -13,9 +13,9 @@ import {
   TextField,
 } from "@mui/material";
 import BurgerMenu from "./components/BurgerMenu";
+import Footer from "./components/Footer";
 import "./App.css";
 import "react-calendar/dist/Calendar.css";
-import Footer from "./components/Footer";
 
 const theme = createTheme({
   palette: {
@@ -77,6 +77,10 @@ const App = () => {
         task.id === id ? { ...task, completed: !task.completed } : task
       )
     );
+  };
+
+  const updateTask = (updatedTask) => {
+    setTasks(tasks.map(task => task.id === updatedTask.id ? updatedTask : task));
   };
 
   const sortTasks = (tasks, criteria) => {
@@ -162,6 +166,7 @@ const App = () => {
           tasks={sortedTasks}
           deleteTask={deleteTask}
           toggleTaskCompletion={toggleTaskCompletion}
+          updateTask={updateTask}
         />
         <Footer />
       </Container>
