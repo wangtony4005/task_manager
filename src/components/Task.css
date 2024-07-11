@@ -1,0 +1,6 @@
+/* src/components/Task.css */
+.completed {
+    text-decoration: line-through;
+    color: #5D536B;
+  }
+  
