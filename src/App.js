@@ -3,6 +3,7 @@ import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 import { Container, Typography, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import './App.css';
+import BurgerMenu from './components/BurgerMenu';
 
 const theme = createTheme({
   palette: {
@@ -62,6 +63,7 @@ const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <BurgerMenu /> 
       <Container maxWidth="sm" className="app-container">
         <Typography variant="h4" component="h1" gutterBottom>
           Task Manager
