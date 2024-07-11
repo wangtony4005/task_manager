@@ -9,23 +9,23 @@
     padding: 10px;
     font-size: 1rem;
     margin-right: 10px;
-    border: 1px solid #92B4A7; /* Adjusted color */
+    border: 1px solid #92B4A7;
     border-radius: 4px;
-    background-color: #D1F0B1; /* Adjusted color */
-    color: #8C8A93; /* Adjusted color */
+    background-color: #D1F0B1; 
+    color: #8C8A93; 
   }
   
   .task-form button {
     padding: 10px 20px;
     font-size: 1rem;
     border: none;
-    background-color: #92B4A7; /* Adjusted color */
+    background-color: #92B4A7; 
     color: white;
     border-radius: 4px;
     cursor: pointer;
   }
   
   .task-form button:hover {
-    background-color: #81667A; /* Adjusted color */
+    background-color: #81667A; 
   }
   
