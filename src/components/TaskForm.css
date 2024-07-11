@@ -10,8 +10,8 @@
   margin-right: 10px;
   border: 1px solid #347FC4;
   border-radius: 4px;
-  background-color: #FFFFFF; /* Changed to lighter color */
-  color: #272838; /* Adjust text color if needed */
+  background-color: #FFFFFF; 
+  color: #272838; 
 }
 
 .task-form button {
@@ -26,4 +26,16 @@
 
 .task-form button:hover {
   background-color: #81667A;
+}
+
+.priority-low {
+    color: green;
+}
+
+.priority-medium {
+    color: orange;
+}
+
+.priority-high {
+    color: red;
 }

@@ -77,9 +77,9 @@ const TaskForm = ({ addTask }) => {
         }}
         sx={{ ml: 1 }}
       >
-        <MenuItem value="Low">Low</MenuItem>
-        <MenuItem value="Medium">Medium</MenuItem>
-        <MenuItem value="High">High</MenuItem>
+        <MenuItem value="Low" style={{ color: 'green' }}>Low</MenuItem>
+        <MenuItem value="Medium" style={{ color: 'orange' }}>Medium</MenuItem>
+        <MenuItem value="High" style={{ color: 'red' }}>High</MenuItem>
       </TextField>
       <Button type="submit" variant="contained" color="primary" style={{ marginLeft: '10px' }}>
         Add Task
@@ -89,3 +89,4 @@ const TaskForm = ({ addTask }) => {
 };
 
 export default TaskForm;
+
