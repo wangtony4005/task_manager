@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
+import Calendar from 'react-calendar';
 import { Container, Typography, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import './App.css';
-import BurgerMenu from './components/BurgerMenu';
+import 'react-calendar/dist/Calendar.css';
 
 const theme = createTheme({
   palette: {
@@ -60,10 +61,24 @@ const App = () => {
     setTasks(tasks.map(task => task.id === id ? { ...task, completed: !task.completed } : task));
   };
 
+  const getTileContent = ({ date, view }) => {
+    if (view === 'month') {
+      const dayTasks = tasks.filter(task => new Date(task.dueDate).toDateString() === date.toDateString());
+      return (
+        <ul>
+          {dayTasks.map(task => (
+            <li key={task.id} style={{ color: task.completed ? '#5D536B' : '#000' }}>
+              {task.name}
+            </li>
+          ))}
+        </ul>
+      );
+    }
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <BurgerMenu /> 
       <Container maxWidth="sm" className="app-container">
         <Typography variant="h4" component="h1" gutterBottom>
           Task Manager
@@ -72,6 +87,9 @@ const App = () => {
           {currentDateTime.toLocaleDateString()} {currentDateTime.toLocaleTimeString()}
         </Typography>
         <TaskForm addTask={addTask} />
+        <Calendar
+          tileContent={getTileContent}
+        />
         <TaskList tasks={tasks} deleteTask={deleteTask} toggleTaskCompletion={toggleTaskCompletion} />
       </Container>
     </ThemeProvider>
