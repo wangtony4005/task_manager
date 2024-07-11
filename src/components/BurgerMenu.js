@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import {
   Box,
   IconButton,
@@ -10,6 +9,7 @@ import {
   styled,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import PomodoroTimer from "./PomodoroTimer"; 
 
 const MenuContainer = styled(Box)(({ theme }) => ({
   position: "fixed",
@@ -54,10 +54,7 @@ function BurgerMenu() {
     setIsOpen(!isOpen);
   };
 
-  const menuItems = [
-    { text: "Home", path: "/" },
-    { text: "Timer", path: "/timer" },
-  ];
+  const menuItems = [{ text: "Pomodoro Timer", component: <PomodoroTimer /> }];
 
   return (
     <MenuContainer>
@@ -73,15 +70,8 @@ function BurgerMenu() {
       <MenuContent>
         <Collapse in={isOpen} timeout="auto" unmountOnExit>
           <StyledList>
-            {menuItems.map((item) => (
-              <StyledListItem
-                button
-                key={item.text}
-                to={item.path}
-                onClick={toggleMenu}
-              >
-                <StyledListItemText primary={item.text} />
-              </StyledListItem>
+            {menuItems.map((item, index) => (
+              <StyledListItem key={index}>{item.component}</StyledListItem>
             ))}
           </StyledList>
         </Collapse>
