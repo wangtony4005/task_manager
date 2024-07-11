@@ -1,9 +1,12 @@
-import React from 'react';
-import { ListItem, ListItemText, IconButton, Checkbox, Typography, Box } from '@mui/material';
-import { Delete, CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
+import React, { useState } from 'react';
+import { ListItem, ListItemText, IconButton, Checkbox, Typography, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Button, TextField, MenuItem } from '@mui/material';
+import { Delete, CheckBox, CheckBoxOutlineBlank, Edit } from '@mui/icons-material';
 import './Task.css';
 
-const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
+const Task = ({ task, deleteTask, toggleTaskCompletion, updateTask }) => {
+  const [isEditing, setIsEditing] = useState(false);
+  const [editedTask, setEditedTask] = useState({ ...task });
+
   const getPriorityClass = (priority) => {
     switch (priority) {
       case 'Low':
@@ -17,12 +20,27 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
     }
   };
 
+  const handleEditChange = (e) => {
+    const { name, value } = e.target;
+    setEditedTask({ ...editedTask, [name]: value });
+  };
+
+  const handleEditSubmit = () => {
+    updateTask(editedTask);
+    setIsEditing(false);
+  };
+
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#81667A' }}>
-          <Delete />
-        </IconButton>
+        <Box>
+          <IconButton edge="end" onClick={() => setIsEditing(true)} style={{ color: '#81667A' }}>
+            <Edit />
+          </IconButton>
+          <IconButton edge="end" onClick={() => deleteTask(task.id)} style={{ color: '#81667A' }}>
+            <Delete />
+          </IconButton>
+        </Box>
       }
       style={{ borderBottom: '1px solid #81667A' }}
     >
@@ -46,6 +64,55 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
         }
         className={task.completed ? 'completed' : ''}
       />
+
+      <Dialog open={isEditing} onClose={() => setIsEditing(false)}>
+        <DialogTitle>Edit Task</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Make changes to your task and save.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            margin="dense"
+            label="Task Name"
+            type="text"
+            fullWidth
+            name="name"
+            value={editedTask.name}
+            onChange={handleEditChange}
+          />
+          <TextField
+            margin="dense"
+            label="Due Date"
+            type="date"
+            fullWidth
+            name="dueDate"
+            value={editedTask.dueDate}
+            onChange={handleEditChange}
+          />
+          <TextField
+            select
+            margin="dense"
+            label="Priority"
+            fullWidth
+            name="priority"
+            value={editedTask.priority}
+            onChange={handleEditChange}
+          >
+            <MenuItem value="Low" style={{ color: 'green' }}>Low</MenuItem>
+            <MenuItem value="Medium" style={{ color: 'orange' }}>Medium</MenuItem>
+            <MenuItem value="High" style={{ color: 'red' }}>High</MenuItem>
+          </TextField>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setIsEditing(false)} color="primary">
+            Cancel
+          </Button>
+          <Button onClick={handleEditSubmit} color="primary">
+            Save
+          </Button>
+        </DialogActions>
+      </Dialog>
     </ListItem>
   );
 };
