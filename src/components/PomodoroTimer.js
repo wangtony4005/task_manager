@@ -13,7 +13,6 @@ const PomodoroTimer = () => {
       }, 1000);
     } else if (timer === 0) {
       clearInterval(interval);
-      
     }
     return () => clearInterval(interval);
   }, [isActive, timer]);
@@ -32,17 +31,13 @@ const PomodoroTimer = () => {
 
   return (
     <Box>
-      <Typography variant="h6" gutterBottom>
+      <Typography variant="h6" color={"#81667A"} gutterBottom>
         Pomodoro Timer
       </Typography>
-      <Typography variant="body1" gutterBottom>
+      <Typography variant="body1" color={"#81667A"} gutterBottom>
         {formatTime(timer)}
       </Typography>
-      <Button
-        variant="contained"
-        color={isActive ? "secondary" : "primary"}
-        onClick={toggleTimer}
-      >
+      <Button variant="contained" color={"secondary"} onClick={toggleTimer}>
         {isActive ? "Pause" : "Start"}
       </Button>
     </Box>

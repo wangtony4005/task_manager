@@ -9,7 +9,7 @@ import {
   styled,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import PomodoroTimer from "./PomodoroTimer"; 
+import PomodoroTimer from "./PomodoroTimer";
 
 const MenuContainer = styled(Box)(({ theme }) => ({
   position: "fixed",
@@ -31,7 +31,7 @@ const MenuContent = styled(Box)(({ theme }) => ({
 }));
 
 const StyledList = styled(List)(({ theme }) => ({
-  backgroundColor: "#B6CB9E",
+  backgroundColor: "#92B4A7",
   borderRadius: theme.shape.borderRadius,
   boxShadow: theme.shadows[4],
   width: 250,
