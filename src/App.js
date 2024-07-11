@@ -3,6 +3,7 @@ import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 import Calendar from 'react-calendar';
 import { Container, Typography, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import BurgerMenu from './components/BurgerMenu'; // Import the BurgerMenu component
 import './App.css';
 import 'react-calendar/dist/Calendar.css';
 
@@ -80,6 +81,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="sm" className="app-container">
+        <BurgerMenu /> {/* Add the BurgerMenu component */}
         <Typography variant="h4" component="h1" gutterBottom>
           Task Manager
         </Typography>
