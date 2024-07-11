@@ -3,7 +3,7 @@ import TaskList from './components/TaskList';
 import TaskForm from './components/TaskForm';
 import Calendar from 'react-calendar';
 import { Container, Typography, CssBaseline, ThemeProvider, createTheme } from '@mui/material';
-import BurgerMenu from './components/BurgerMenu'; // Import the BurgerMenu component
+import BurgerMenu from './components/BurgerMenu';
 import './App.css';
 import 'react-calendar/dist/Calendar.css';
 
@@ -50,8 +50,7 @@ const App = () => {
   }, []);
 
   const addTask = (task) => {
-    console.log("Adding task:", task);
-    setTasks([...tasks, task]);
+    setTasks([...tasks, { ...task, dueDate: new Date(task.dueDate).toISOString().split('T')[0] }]);
   };
 
   const deleteTask = (id) => {
@@ -64,7 +63,13 @@ const App = () => {
 
   const getTileContent = ({ date, view }) => {
     if (view === 'month') {
-      const dayTasks = tasks.filter(task => new Date(task.dueDate).toDateString() === date.toDateString());
+      const adjustedDate = new Date(date);
+      adjustedDate.setDate(adjustedDate.getDate() - 1);
+      
+      const dayTasks = tasks.filter(task => {
+        const taskDate = new Date(task.dueDate);
+        return taskDate.toDateString() === adjustedDate.toDateString();
+      });
       return (
         <ul>
           {dayTasks.map(task => (
@@ -81,7 +86,7 @@ const App = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Container maxWidth="sm" className="app-container">
-        <BurgerMenu /> {/* Add the BurgerMenu component */}
+        <BurgerMenu />
         <Typography variant="h4" component="h1" gutterBottom>
           Task Manager
         </Typography>
