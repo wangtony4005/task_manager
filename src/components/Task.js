@@ -4,6 +4,19 @@ import { Delete, CheckBox, CheckBoxOutlineBlank } from '@mui/icons-material';
 import './Task.css';
 
 const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
+  const getPriorityClass = (priority) => {
+    switch (priority) {
+      case 'Low':
+        return 'priority-low';
+      case 'Medium':
+        return 'priority-medium';
+      case 'High':
+        return 'priority-high';
+      default:
+        return '';
+    }
+  };
+
   return (
     <ListItem
       secondaryAction={
@@ -22,7 +35,7 @@ const Task = ({ task, deleteTask, toggleTaskCompletion }) => {
       <ListItemText
         primary={task.name}
         secondary={
-          <Box className="task-secondary">
+          <Box className={`task-secondary ${getPriorityClass(task.priority)}`}>
             <Typography component="span" variant="body2" color="textPrimary">
               Due: {task.dueDate}
             </Typography>
