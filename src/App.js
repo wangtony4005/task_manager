@@ -8,6 +8,9 @@ import {
   CssBaseline,
   ThemeProvider,
   createTheme,
+  Box,
+  MenuItem,
+  TextField,
 } from "@mui/material";
 import BurgerMenu from "./components/BurgerMenu";
 import "./App.css";
@@ -36,6 +39,7 @@ const theme = createTheme({
 const App = () => {
   const [tasks, setTasks] = useState([]);
   const [currentDateTime, setCurrentDateTime] = useState(new Date());
+  const [sortCriteria, setSortCriteria] = useState('');
 
   useEffect(() => {
     const storedTasks = JSON.parse(localStorage.getItem("tasks"));
@@ -75,6 +79,22 @@ const App = () => {
     );
   };
 
+  const sortTasks = (tasks, criteria) => {
+    switch (criteria) {
+      case 'date':
+        return tasks.sort((a, b) => new Date(a.dueDate) - new Date(b.dueDate));
+      case 'priority':
+        const priorityOrder = { 'High': 1, 'Medium': 2, 'Low': 3 };
+        return tasks.sort((a, b) => priorityOrder[a.priority] - priorityOrder[b.priority]);
+      case 'name':
+        return tasks.sort((a, b) => a.name.localeCompare(b.name));
+      default:
+        return tasks;
+    }
+  };
+
+  const sortedTasks = sortTasks([...tasks], sortCriteria);
+
   const getTileContent = ({ date, view }) => {
     if (view === "month") {
       const adjustedDate = new Date(date);
@@ -112,13 +132,27 @@ const App = () => {
           {currentDateTime.toLocaleTimeString()}
         </Typography>
         <TaskForm addTask={addTask} />
+        <Box mb={2}>
+          <TextField
+            select
+            label="Sort by"
+            value={sortCriteria}
+            onChange={(e) => setSortCriteria(e.target.value)}
+            variant="outlined"
+            fullWidth
+          >
+            <MenuItem value="date">Date</MenuItem>
+            <MenuItem value="priority">Priority</MenuItem>
+            <MenuItem value="name">Name</MenuItem>
+          </TextField>
+        </Box>
         <Calendar tileContent={getTileContent} />
         <TaskList
-          tasks={tasks}
+          tasks={sortedTasks}
           deleteTask={deleteTask}
           toggleTaskCompletion={toggleTaskCompletion}
         />
-         <Footer />
+        <Footer />
       </Container>
     </ThemeProvider>
   );
